@@ -10,7 +10,6 @@ public class Main {
         System.out.print("Enter PIN: ");
         int pin = sc.nextInt();
 
-        // TEMP USER (later from database)
         User user = new User(1, 1234, 1000);
 
         if (id == user.getId() && pin == user.getPin()) {
