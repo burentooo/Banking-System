@@ -2,11 +2,11 @@ package banking.system;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*; //for ActionListener and ActionEvent
+import java.awt.event.*;
 
 public class Login extends JFrame {
     
-    // 1. Declare variables at the class level so the listener method can access them
+    
     JTextField cardTextField;
     JPasswordField pinTextField;
 
@@ -23,7 +23,7 @@ public class Login extends JFrame {
         cardLabel.setBounds(250, 150, 100, 30);
         add(cardLabel);
 
-        // 2. Initialize the class-level variable
+        
         cardTextField = new JTextField();
         cardTextField.setBounds(330, 150, 200, 30);
         add(cardTextField);
@@ -32,7 +32,7 @@ public class Login extends JFrame {
         pinLabel.setBounds(250, 200, 100, 30);
         add(pinLabel);
 
-        // 2. Initialize the class-level variable
+        
         pinTextField = new JPasswordField();
         pinTextField.setBounds(330, 200, 200, 30);
         add(pinTextField);
@@ -41,7 +41,7 @@ public class Login extends JFrame {
         loginButton.setBounds(330, 260, 100, 30);
         add(loginButton);        
         
-        // 3. Attach the action listener to the button
+        
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +57,7 @@ public class Login extends JFrame {
         setVisible(true); 
     }
     
-    // 4. Move the method OUTSIDE of the constructor
+    
     private void authenticateUser() {
         // hard coded credentials
         String validCardNumber = "1"; 
@@ -75,23 +75,21 @@ public class Login extends JFrame {
         
         else if (enteredCard.equals(validCardNumber) && enteredPin.equals(validPin)) {
             
-            // Open the Account window 
-            // Ensure you have an Account.java class created in this package
+            //opens account screen
             new Account();
             setVisible(false);
             
         } else {
             
-            // Failure: Show an error pop-up
             JOptionPane.showMessageDialog(this, 
                 "Invalid Card Number or PIN. Please try again.", 
                 "Authentication Failed", 
                 JOptionPane.ERROR_MESSAGE);
                 
-            // Optional: Clear the fields after a failed attempt
+            //clear after error
             cardTextField.setText("");
             pinTextField.setText("");
-            cardTextField.requestFocus(); // Set cursor back to the card number field
+            cardTextField.requestFocus();
         }
     }
     
